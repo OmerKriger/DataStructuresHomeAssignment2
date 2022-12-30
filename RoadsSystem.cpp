@@ -15,18 +15,23 @@ void RoadsSystem::__Init__()
 
 void RoadsSystem::AddBridge(double height, int roadNum)
 {
-	roadsBridges[roadNum].addBridge(height);
-	heapOfRoads.FixHeap(roadNum);
+	roadsBridges[roadNum-1].addBridge(height);
+	heapOfRoads.FixHeap(roadsBridges[roadNum - 1].getHeapDataIndex());
 }
 
 void RoadsSystem::WhichRoad(double height)
 {
-	cout << heapOfRoads.getMax();
+	int roadNo = heapOfRoads.getMaxRoadNumber();
+	double roadMaxHeight = heapOfRoads.getMaxValue();
+	if (height < roadMaxHeight)
+		cout << -1;
+	else
+		cout << roadNo;
 }
 
 void RoadsSystem::printBridgesHeights(int roadNum)
 {
-	roadsBridges[roadNum].printList();
+	roadsBridges[roadNum-1].printList();
 }
 
 bool RoadsSystem::processCommand()

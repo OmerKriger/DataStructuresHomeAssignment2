@@ -1,8 +1,11 @@
 #include "List.h"
 using namespace std;
 
+int ListBridges::numberOfTheRoad = 0; // Set first number of the road zero
+
 ListBridges::ListBridges()
 {
+	++(this->numberOfTheRoad);
 	this->head = this->tail = nullptr;
 }
 
@@ -81,6 +84,7 @@ void ListBridges::addBridge(double bridgeHeight)
 		}
 	}
 	addBridgeToStart(bridgeHeight);
+	this->roadHeapData->getLowestBridgeHeight() = bridgeHeight;
 }
 
 void ListBridges::addBridgeToStart(double bridgeHeight)
@@ -102,6 +106,7 @@ void ListBridges::printList() const
 	while (curr != nullptr)
 	{
 		cout << curr->getBridgeHeight() << " ";
+		curr = curr->getNext();
 	}
 	cout << endl;
 }
@@ -114,9 +119,14 @@ bool ListBridges::isEmpty() const
 		return false;
 }
 
-void ListBridges::linkHeapData(const HeapData* heapData)
+void ListBridges::linkHeapData(HeapData* heapData)
 {
 	if (roadHeapData != nullptr)
 		roadHeapData = heapData;
+}
+
+int ListBridges::getHeapDataIndex() const
+{
+	return roadHeapData->getIndexInHeap();
 }
 

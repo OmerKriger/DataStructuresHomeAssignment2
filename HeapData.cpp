@@ -1,6 +1,6 @@
 #include "HeapData.h"
 
-HeapData::HeapData(const ListBridges* ) : bridges(bridges)
+HeapData::HeapData(ListBridges* bridges) : bridges(bridges)
 {
 	bridges->linkHeapData(this);
 	if (!bridges->isEmpty())
@@ -16,6 +16,11 @@ HeapData::HeapData(const ListBridges* ) : bridges(bridges)
 }
 
 double HeapData::getLowestBridgeHeight() const
+{
+	return this->lowestBridgeHeight;
+}
+
+double& HeapData::getLowestBridgeHeight()
 {
 	return this->lowestBridgeHeight;
 }

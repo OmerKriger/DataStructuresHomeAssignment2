@@ -3,11 +3,11 @@
 using namespace std;
 // Constractor
 
-HeapRoads::HeapRoads(int HeapSize)
+HeapRoads::HeapRoads(int size)
 {
-    this->roads = new HeapData * [heapSize];
+    this->roads = new HeapData * [size];
     this->heapSize = 0;
-    this->maxSize = heapSize;
+    this->maxSize = size;
 }
 
 HeapRoads::~HeapRoads()
@@ -47,7 +47,8 @@ void HeapRoads::FixHeap(int node)
         max = node;
     if (max != node)
     {
-        swap(roads[node], roads[max]);
+        swap(roads[node], roads[max]); // swapping between roads Data in heap
+        swap(roads[node]->getIndexInHeap(), roads[max]->getIndexInHeap()); // swaping the index between HeapData
         FixHeap(max);
     }
 }
@@ -60,7 +61,7 @@ bool HeapRoads::isInHeap(int index)
         return false;
 }
 
-void HeapRoads::insert(const ListBridges* listRoad)
+void HeapRoads::insert(ListBridges* listRoad)
 {
     if (this->heapSize >= this->maxSize)
         return;
@@ -74,11 +75,17 @@ void HeapRoads::insert(const ListBridges* listRoad)
         parent = Parent(index);
     }
     roads[index] = newData;
+    newData->getIndexInHeap() = index; // save the index of the Data in the heap
 }
 
 // getter
 
-int HeapRoads::getMax() const
+double HeapRoads::getMaxValue() const
 {
     return roads[0]->getLowestBridgeHeight();
+}
+
+int HeapRoads::getMaxRoadNumber() const
+{
+    return roads[0]->getListBridges()->getRoadNumber();
 }

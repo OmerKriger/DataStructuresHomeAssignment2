@@ -17,7 +17,7 @@ class RoadsSystem
 	HeapRoads heapOfRoads;
 	int numOfRoads;
 public:
-	RoadsSystem(int numOfRoads) : numOfRoads(), roadsBridges(nullptr), heapOfRoads(numOfRoads) {}
+	RoadsSystem(int numOfRoads) : heapOfRoads(numOfRoads), numOfRoads(numOfRoads), roadsBridges(nullptr) {}
 	~RoadsSystem();
 	void __Init__();
 	void AddBridge(double height, int roadNum);

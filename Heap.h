@@ -10,11 +10,12 @@ class HeapRoads
 	int Parent(int node);
 	bool isInHeap(int index);
 public:
-	HeapRoads(int HeapSize);
+	HeapRoads(int size);
 	~HeapRoads();
 	void FixHeap(int node);
-    int getMax() const;
-	void insert(const ListBridges* listRoad);
+    double getMaxValue() const;
+	int getMaxRoadNumber() const;
+	void insert(ListBridges* listRoad);
 };
 
 #endif
