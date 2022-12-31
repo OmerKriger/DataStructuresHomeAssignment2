@@ -10,7 +10,8 @@ class ListNodeBridges;
 
 class ListBridges
 {
-	static int numberOfTheRoad;
+	static int counter;
+	int numberOfTheRoad;
 	ListNodeBridges* head;
 	ListNodeBridges* tail;
 	HeapData* roadHeapData;
@@ -31,7 +32,7 @@ public:
 	bool isEmpty() const;
 	void linkHeapData(HeapData* heapData);
 	int getHeapDataIndex() const;
-	int getRoadNumber() const { return numberOfTheRoad; }
+	int getRoadNumber() const {	return numberOfTheRoad; }
 };
 
 #endif // !__LIST_H

@@ -13,7 +13,7 @@ HeapRoads::HeapRoads(int size)
 HeapRoads::~HeapRoads()
 {
     for (int i = 0; i < heapSize; i++)
-        delete roads[i];
+        delete this->roads[i];
     delete[] this->roads;
 }
 
@@ -37,14 +37,15 @@ int HeapRoads::Parent(int node)
 
 void HeapRoads::FixHeap(int node)
 {
-    int max;
-    int left = Left(node), right = Right(node);
-    if (isInHeap(left) && ( *(roads[left]) > *(roads[node]) ) ) 
+    int max, left = Left(node), right = Right(node);
+
+    if (isInHeap(left) && (*(roads[left]) > *(roads[node])))
         max = left;
-    else if ( isInHeap(right) && ( *(roads[right]) > *(roads[node]) ) ) 
-        max = right;
     else
         max = node;
+    if ( isInHeap(right) && ( *(roads[right]) > *(roads[max]) ) )
+        max = right;
+
     if (max != node)
     {
         swap(roads[node], roads[max]); // swapping between roads Data in heap

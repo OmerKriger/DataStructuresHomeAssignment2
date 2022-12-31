@@ -1,11 +1,11 @@
 #include "List.h"
 using namespace std;
 
-int ListBridges::numberOfTheRoad = 0; // Set first number of the road zero
+int ListBridges::counter = 0; // Set first number of the road zero
 
 ListBridges::ListBridges()
 {
-	++(this->numberOfTheRoad);
+	this->numberOfTheRoad = ++(this->counter);
 	this->head = this->tail = nullptr;
 }
 
@@ -75,6 +75,8 @@ ListNodeBridges* ListBridges::getTail()
 
 void ListBridges::addBridge(double bridgeHeight)
 {
+	if (this->roadHeapData->areNoBridges()) // if there are no bridges till now change it because we adding the first
+		this->roadHeapData->areNoBridges() = false;
 	if (!(this->isEmpty()))
 	{
 		if (bridgeHeight > head->getBridgeHeight())

@@ -23,10 +23,10 @@ void RoadsSystem::WhichRoad(double height)
 {
 	int roadNo = heapOfRoads.getMaxRoadNumber();
 	double roadMaxHeight = heapOfRoads.getMaxValue();
-	if (height < roadMaxHeight)
-		cout << -1;
+	if (height >= roadMaxHeight)
+		cout << -1 << endl;
 	else
-		cout << roadNo;
+		cout << roadNo << endl;
 }
 
 void RoadsSystem::printBridgesHeights(int roadNum)
